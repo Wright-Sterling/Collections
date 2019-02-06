@@ -7,9 +7,13 @@ package collections;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.TreeSet;
 
 /**
  *
@@ -26,7 +30,8 @@ public class Collections {
         System.out.println("----Example of Maps----");
         demoMaps();
         System.out.println("----Example of Queues----");
-        demoQueues();
+        demoQueues(); // unordered using priority queue
+        demoLinkedLists(); // ordered FIFO
         System.out.println("----Example of Sets----");
         demoSets();
         System.out.println("----Example of Trees----");
@@ -77,14 +82,93 @@ public class Collections {
     }
 
     private static void demoQueues() {
-        
+        PriorityQueue<String> myQueue=new PriorityQueue<String>();  
+        myQueue.add("Wake up");  
+        myQueue.add("Pray");  
+        myQueue.add("Read scriptures");  
+        myQueue.add("Shave");  
+        myQueue.add("Shower");  
+        System.out.println("head:"+myQueue.element());  
+        System.out.println("head:"+myQueue.peek()); 
+        // Without a comparator, the list items are not in the above order
+        System.out.println("Iterating through the queue...");
+        Iterator itr=myQueue.iterator();  
+        while(itr.hasNext()){  
+            System.out.println(itr.next());  
+        }  
+        myQueue.remove();  
+        myQueue.poll();  
+        System.out.println("After removing two elements:");  
+        Iterator<String> itr2=myQueue.iterator();  
+        while(itr2.hasNext()){  
+            System.out.println(itr2.next());  
+        }  
     }
 
+    private static void demoLinkedLists() {
+        LinkedList <String> myQueue = new LinkedList <String>();
+        myQueue.add("Wake up");  
+        myQueue.add("Pray");  
+        myQueue.add("Read scriptures");  
+        myQueue.add("Shave");  
+        myQueue.add("Shower");  
+        System.out.println("head:"+myQueue.element());  
+        System.out.println("head:"+myQueue.peek()); 
+        // As a linked list, the items are now in the above FIFO order
+        System.out.println("Iterating through the queue...");
+        Iterator itr=myQueue.iterator();  
+        while(itr.hasNext()){  
+            System.out.println(itr.next());  
+        }  
+        myQueue.remove();  
+        myQueue.poll(); 
+        // Still in order with last items remaining
+        System.out.println("After removing two elements:");  
+        Iterator<String> itr2=myQueue.iterator();  
+        while(itr2.hasNext()){  
+            System.out.println(itr2.next());  
+        }          
+    }
+    
     private static void demoSets() {
-        
+        HashSet<String> mySet=new HashSet<String>();  
+        mySet.add("Lists");  
+        mySet.add("Maps");  
+        mySet.add("Queus");  
+        mySet.add("Sets");  
+        mySet.add("Trees");  
+        // The set is unordered
+        Iterator<String> itr=mySet.iterator();  
+        while(itr.hasNext()){  
+            System.out.println(itr.next());
+        }   
+        // Try to add a duplicate item
+        mySet.add("Sets");
+        System.out.println("Set elements after trying to add \"Sets\" again.");
+        Iterator<String> itr2=mySet.iterator();  
+        while(itr2.hasNext()){  
+            System.out.println(itr2.next());
+        } 
     }
 
     private static void demoTrees() {
-        
-    }
+        TreeSet<String> myTree=new TreeSet<String>();  
+        myTree.add("Lists");  
+        myTree.add("Maps");  
+        myTree.add("Queus");  
+        myTree.add("Sets");  
+        myTree.add("Trees");  
+        // The set is ordered alphabeticaly
+        Iterator<String> itr=myTree.iterator();  
+        while(itr.hasNext()){  
+            System.out.println(itr.next());
+        }   
+        // Try to add a duplicate item
+        myTree.add("Trees");
+        System.out.println("Set elements after trying to add \"Trees\" again.");
+        Iterator<String> itr2=myTree.iterator();  
+        while(itr2.hasNext()){  
+            System.out.println(itr2.next());
+        } 
+    }    
 }
