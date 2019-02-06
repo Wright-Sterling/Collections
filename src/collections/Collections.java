@@ -6,7 +6,10 @@
 package collections;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -18,15 +21,15 @@ public class Collections {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Example of Lists");
+        System.out.println("----Example of Lists----");
         demoLists();
-        System.out.println("Example of Maps");
+        System.out.println("----Example of Maps----");
         demoMaps();
-        System.out.println("Example of Queues");
+        System.out.println("----Example of Queues----");
         demoQueues();
-        System.out.println("Example of Sets");
+        System.out.println("----Example of Sets----");
         demoSets();
-        System.out.println("Example of Trees");
+        System.out.println("----Example of Trees----");
         demoTrees();
     }
     
@@ -46,7 +49,31 @@ public class Collections {
     }
 
     private static void demoMaps() {
+        Map<String,String> myMap=new HashMap<String,String>();  
+        myMap.put("A","Alpha");  
+        myMap.put("B","Bravo");  
+        myMap.put("C","Charlie");  
+        //Show elements. They may not print in the above order
+        for (Map.Entry m : myMap.entrySet()) {
+            System.out.println(m.getKey()+" "+m.getValue());  
+        }
         
+        System.out.println("Adding some entries...");
+        myMap.put("D","Delta");  
+        myMap.put("E","Echo");  
+        myMap.put("F","Frank");  
+        myMap.put("G","Golf");  
+        myMap.put("H","Hotel");  
+        myMap.put("I","India");          
+        for (Map.Entry m : myMap.entrySet()) {
+            System.out.println(m.getKey()+" "+m.getValue());  
+        }
+
+        System.out.println("Changing the value for entry \"F\"...");
+        myMap.replace("F", "Foxtrot");
+        for (Map.Entry m : myMap.entrySet()) {
+            System.out.println(m.getKey()+" "+m.getValue());  
+        }
     }
 
     private static void demoQueues() {
